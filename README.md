@@ -1,7 +1,7 @@
 # Links
 
 [Deployed link](https://bz-resty-react.netlify.app/)
-[PR link](https://github.com/bahazghayar/resty/pull/1)
+[PR link](https://github.com/bahazghayar/resty/pull/2)
 
 # Getting Started with Create React App
 
