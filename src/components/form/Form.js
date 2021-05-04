@@ -8,7 +8,8 @@ class Form extends React.Component {
         super(props);
         this.state = {
             url: '',
-            method: '',
+            method: 'GET',
+            body: '',
         };
     }
 
@@ -30,40 +31,35 @@ class Form extends React.Component {
 
     // }
 
+
     handleSubmit = async (e) => {
+        
         e.preventDefault();
-        this.setState({
+        await this.setState({
             url: e.target.url.value,
             method: this.state.method,
+            body: e.target.body.value,
         });
-        try {
-                const result = await superagent[this.state.method.toLowerCase()](
-                    e.target.url.value
-                );
-                console.log(result);
-                let { headers, body } = result;
-                this.props.handler(headers, body, this.state);
-            
-        } catch (error) {
-            this.props.handler(null, error.message, this.state);
-            console.error(error.message)
-        }
-    }
+        this.props.handler(this.state);
+    };
+
 
     render() {
         return (
             <main>
                 <form onSubmit={this.handleSubmit}>
                     <div>
-                        <input type="text" placeholder="URL:" name="url" onClick={this.handleURL} />
-                        <button type="submit" >{this.props.prompt}</button>
+                        <input type="text" placeholder="URL:" name="url" id="url" onClick={this.handleURL} />
+                        <button type="submit"  id="submit" >{this.props.prompt}</button>
                     </div>
+                    <br />
+                    <textarea type="text" name="body"  id="body" placeholder="Request body" rows="3" cols="40" />
 
                     <div className="methods">
-                        <button value="GET" defaultChecked onClick={this.handleMethod}>GET</button>
-                        <button value="POST" onClick={this.handleMethod}>POST</button>
-                        <button value="PUT" onClick={this.handleMethod}>PUT</button>
-                        <button value="DELETE" onClick={this.handleMethod}>DELETE</button>
+                        <button value="GET" id="GET" defaultChecked onClick={this.handleMethod}>GET</button>
+                        <button value="POST" id="POST" onClick={this.handleMethod}>POST</button>
+                        <button value="PUT" id="PUT" onClick={this.handleMethod}>PUT</button>
+                        <button value="DELETE" id="DELETE" onClick={this.handleMethod}>DELETE</button>
                     </div>
                 </form>
 
