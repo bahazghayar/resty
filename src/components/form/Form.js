@@ -1,8 +1,6 @@
 import React from 'react';
 import './Form.scss';
 
-const superagent = require('superagent');
-
 class Form extends React.Component {
     constructor(props) {
         super(props);
@@ -33,7 +31,7 @@ class Form extends React.Component {
 
 
     handleSubmit = async (e) => {
-        
+
         e.preventDefault();
         await this.setState({
             url: e.target.url.value,
