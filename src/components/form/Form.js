@@ -44,7 +44,7 @@ class Form extends React.Component {
 
     render() {
         return (
-            <main>
+            <div>
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <input type="text" placeholder="URL:" name="url" id="url" onClick={this.handleURL} />
@@ -61,12 +61,12 @@ class Form extends React.Component {
                     </div>
                 </form>
 
-                <div className="Display">
+                {/* <div className="Display">
                     <h3>{this.state.method}</h3>
                     <h3>{this.state.url}</h3>
 
-                </div>
-            </main>
+                </div> */}
+           </div>
         );
     }
 
